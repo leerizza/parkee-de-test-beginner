@@ -1,0 +1,20 @@
+name: parkee
+version: "1.0.0"
+config-version: 2
+
+profile: parkee
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  parkee:
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts

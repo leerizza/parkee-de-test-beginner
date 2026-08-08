@@ -1,0 +1,108 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "1:1 cleaned copy of raw customers from the OLTP source."
+    columns:
+      - name: customer_id
+        description: "Primary key of a customer."
+        tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: "Customer full name."
+        tests:
+          - not_null
+      - name: phone
+        description: "Customer phone number."
+      - name: email
+        description: "Customer email address."
+      - name: gender
+        description: "Customer gender (male/female)."
+      - name: city
+        description: "Customer city."
+      - name: created_at
+        description: "Timestamp the customer record was created."
+
+  - name: stg_products
+    description: "1:1 cleaned copy of raw products from the OLTP source."
+    columns:
+      - name: product_id
+        description: "Primary key of a product."
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "Product name."
+        tests:
+          - not_null
+      - name: category
+        description: "Product category."
+      - name: brand
+        description: "Product brand."
+      - name: unit_price
+        description: "Current unit price of the product."
+        tests:
+          - not_null
+      - name: is_active
+        description: "Whether the product is currently sellable."
+      - name: created_at
+        description: "Timestamp the product record was created."
+
+  - name: stg_transactions
+    description: "Transactions filtered to status = 'completed' only, so downstream marts never need to re-apply this business rule."
+    columns:
+      - name: transaction_id
+        description: "Primary key of a transaction."
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "FK to stg_customers."
+      - name: store_id
+        description: "Raw store identifier (1-3), no store dimension at this level."
+      - name: transaction_date
+        description: "Timestamp the transaction occurred."
+        tests:
+          - not_null
+      - name: total_amount
+        description: "Total transaction amount."
+        tests:
+          - not_null
+      - name: payment_method
+        description: "Payment method used (cash, debit, credit, e-wallet)."
+      - name: status
+        description: "Transaction status; always 'completed' after staging filter."
+        tests:
+          - not_null
+
+  - name: stg_transaction_items
+    description: "1:1 cleaned copy of raw transaction_items from the OLTP source."
+    columns:
+      - name: item_id
+        description: "Primary key of a transaction item."
+        tests:
+          - unique
+          - not_null
+      - name: transaction_id
+        description: "FK to stg_transactions."
+        tests:
+          - not_null
+      - name: product_id
+        description: "FK to stg_products."
+        tests:
+          - not_null
+      - name: quantity
+        description: "Quantity sold."
+        tests:
+          - not_null
+      - name: unit_price
+        description: "Unit price at time of sale."
+        tests:
+          - not_null
+      - name: discount
+        description: "Discount percentage applied."
+      - name: subtotal
+        description: "Line subtotal after discount."
+        tests:
+          - not_null

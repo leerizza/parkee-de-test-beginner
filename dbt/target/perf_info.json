@@ -1,0 +1,51 @@
+{
+    "path_count": 136,
+    "parsed_path_count": 136,
+    "static_analysis_path_count": 8,
+    "static_analysis_parsed_path_count": 8,
+    "is_partial_parse_enabled": false,
+    "is_static_analysis_enabled": true,
+    "read_files_elapsed": 0.03448550000000017,
+    "load_macros_elapsed": 0.6126733749999997,
+    "parse_project_elapsed": 0.37481387499999963,
+    "patch_sources_elapsed": 0.014143624999999993,
+    "process_manifest_elapsed": 0.06066470800000001,
+    "load_all_elapsed": 1.154616834,
+    "projects": [
+        {
+            "project_name": "parkee",
+            "elapsed": 0.367830208,
+            "parsers": [
+                {
+                    "parser": "model",
+                    "elapsed": 0.14357516699999984,
+                    "parsed_path_count": 8
+                },
+                {
+                    "parser": "test",
+                    "elapsed": 0.22006133299999986,
+                    "parsed_path_count": 3
+                }
+            ],
+            "parsed_path_count": 11
+        },
+        {
+            "project_name": "dbt_clickhouse",
+            "elapsed": 0.003413667000000231,
+            "parsers": [],
+            "parsed_path_count": 0
+        },
+        {
+            "project_name": "dbt",
+            "elapsed": 0.003498001000000528,
+            "parsers": [
+                {
+                    "parser": "doc",
+                    "elapsed": 0.00016362499999988955,
+                    "parsed_path_count": 1
+                }
+            ],
+            "parsed_path_count": 1
+        }
+    ]
+}

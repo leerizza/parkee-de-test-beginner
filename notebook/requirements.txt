@@ -1,0 +1,7 @@
+clickhouse-connect>=0.7.16
+pandas>=2.0
+matplotlib>=3.7
+seaborn>=0.13
+plotly>=5.20
+python-dotenv>=1.0
+jupyter>=1.0

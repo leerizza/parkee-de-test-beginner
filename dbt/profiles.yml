@@ -1,0 +1,12 @@
+parkee:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      schema: "{{ env_var('DBT_CLICKHOUSE_SCHEMA', 'analytics') }}"
+      host: "{{ env_var('CLICKHOUSE_HOST', 'localhost') }}"
+      port: "{{ env_var('CLICKHOUSE_HTTP_PORT', '8123') | as_number }}"
+      user: "{{ env_var('CLICKHOUSE_USER', 'parkee') }}"
+      password: "{{ env_var('CLICKHOUSE_PASSWORD', 'parkee') }}"
+      secure: false
+      threads: 2
