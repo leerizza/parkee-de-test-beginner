@@ -153,9 +153,7 @@ mart layer (`analytics_marts.fact_sales`, `dim_product`) di ClickHouse.
 
 ## 7. Video Walkthrough
 
-_TBD — akan ditambahkan link video (5-10 menit) yang menunjukkan pipeline
-jalan end-to-end: Docker Compose up, Airflow DAG success, dbt transform
-sukses, dan notebook dengan 3 visualisasi tampil._
+_ Link Video --> https://drive.google.com/file/d/1X9A1JkaixvSJHwFwwqPqsqiEJyNI2gl3/view?usp=sharing
 
 ## 8. Catatan Pendekatan
 
